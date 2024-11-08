@@ -82,7 +82,6 @@ export class AddParcelComponent {
   public addParcel() {
     this.http.post("http://localhost:8080/parcel/add-parcel", this.parcel).subscribe((data) => {
       alert("Parcel Information Add Sucsesfull !!!");
-      clear
     })
   }
 
