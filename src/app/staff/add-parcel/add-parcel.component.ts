@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-add-parcel',
   standalone: true,
-  imports: [FormsModule, CommonModule, HttpClientModule],
+  imports: [FormsModule, CommonModule, HttpClientModule, ReactiveFormsModule],
   templateUrl: './add-parcel.component.html',
   styleUrl: './add-parcel.component.css'
 })
@@ -82,6 +82,7 @@ export class AddParcelComponent {
   public addParcel() {
     this.http.post("http://localhost:8080/parcel/add-parcel", this.parcel).subscribe((data) => {
       alert("Parcel Information Add Sucsesfull !!!");
+      clear
     })
   }
 

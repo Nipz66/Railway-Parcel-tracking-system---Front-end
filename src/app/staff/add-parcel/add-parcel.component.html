@@ -12,8 +12,8 @@
                         <div class="row g-3">
                             <div class="col-12">
                                 <label for="senderName" class="form-label">Sender Name</label>
-                                <input type="text" class="form-control" id="senderName" placeholder="R.D Saman Kumara"
-                                    [(ngModel)]="parcel.senderName" required>
+                                <input type="text" class="form-control" id="senderName" name="senderName"
+                                    placeholder="R.D Saman Kumara" [(ngModel)]="parcel.senderName" required>
                                 <div class="invalid-feedback">
                                     Valid sender name is required.
                                 </div>
@@ -21,8 +21,8 @@
 
                             <div class="col-12">
                                 <label for="senderPhoneNumber" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" id="senderPhoneNumber"
-                                    placeholder="Phone number" [(ngModel)]="parcel.senderPhoneNumber" required>
+                                <input type="text" class="form-control" id="senderPhoneNumber" name="senderPhoneNumber"
+                                    [(ngModel)]="parcel.senderPhoneNumber" required>
                                 <div class="invalid-feedback">
                                     Your phone number is required.
                                 </div>
@@ -31,7 +31,7 @@
                             <div class="col-12">
                                 <label for="senderGmail" class="form-label">Email <span
                                         class="text-body-secondary">(Optional)</span></label>
-                                <input type="email" class="form-control" id="senderGmail" placeholder="you@example.com"
+                                <input type="email" class="form-control" id="senderGmail" name="senderGmail"
                                     [(ngModel)]="parcel.senderGmail">
                                 <div class="invalid-feedback">
                                     Please enter a valid email address for shipping updates.
@@ -40,7 +40,7 @@
 
                             <div class="col-12">
                                 <label for="senderAddress" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="senderAddress" placeholder="1234 Main St"
+                                <input type="text" class="form-control" id="senderAddress" name="senderAddress"
                                     [(ngModel)]="parcel.senderAddress" required>
                                 <div class="invalid-feedback">
                                     Please enter your address.
@@ -61,7 +61,7 @@
                         <div class="row g-3">
                             <div class="col-12">
                                 <label for="receiverName" class="form-label">Receiver Name</label>
-                                <input type="text" class="form-control" id="receiverName"
+                                <input type="text" class="form-control" id="receiverName" name="receiverName"
                                     placeholder="A.A Wikum Sanjaya" [(ngModel)]="parcel.receiverName" required>
                                 <div class="invalid-feedback">
                                     Valid receiver name is required.
@@ -71,7 +71,8 @@
                             <div class="col-12">
                                 <label for="receiverPhoneNumber" class="form-label">Phone Number</label>
                                 <input type="text" class="form-control" id="receiverPhoneNumber"
-                                    placeholder="Phone number" [(ngModel)]="parcel.receiverPhoneNumber" required>
+                                    name="receiverPhoneNumber" placeholder="Phone number"
+                                    [(ngModel)]="parcel.receiverPhoneNumber" required>
                                 <div class="invalid-feedback">
                                     Your phone number is required.
                                 </div>
@@ -80,7 +81,7 @@
                             <div class="col-12">
                                 <label for="receiverGmail" class="form-label">Email <span
                                         class="text-body-secondary">(Optional)</span></label>
-                                <input type="email" class="form-control" id="receiverGmail"
+                                <input type="email" class="form-control" id="receiverGmail" name="receiverGmail"
                                     placeholder="you@example.com" [(ngModel)]="parcel.receiverGmail">
                                 <div class="invalid-feedback">
                                     Please enter a valid email address for shipping updates.
@@ -89,8 +90,8 @@
 
                             <div class="col-12">
                                 <label for="receiverAddress" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="receiverAddress" placeholder="1234 Main St"
-                                    [(ngModel)]="parcel.receiverAddress" required>
+                                <input type="text" class="form-control" id="receiverAddress" name="receiverAddress"
+                                    placeholder="1234 Main St" [(ngModel)]="parcel.receiverAddress" required>
                                 <div class="invalid-feedback">
                                     Please enter the receiver's address.
                                 </div>
@@ -111,7 +112,7 @@
                     <div class="row g-3">
                         <div class="col-sm-6">
                             <label for="weight" class="form-label">Weight</label>
-                            <input type="text" class="form-control" id="weight" placeholder="Enter weight"
+                            <input type="text" class="form-control" id="weight" name="weight" placeholder="Enter weight"
                                 [(ngModel)]="parcel.weight" required>
                             <div class="invalid-feedback">
                                 Parcel weight is required.
@@ -120,8 +121,8 @@
 
                         <div class="col-12">
                             <label for="description" class="form-label">Description</label>
-                            <textarea class="form-control" id="description" [(ngModel)]="parcel.description" rows="3"
-                                required></textarea>
+                            <textarea class="form-control" id="description" name="description"
+                                [(ngModel)]="parcel.description" rows="3" required></textarea>
                             <div class="invalid-feedback">
                                 Please provide a description.
                             </div>
@@ -129,7 +130,8 @@
 
                         <div class="col-md-5">
                             <label for="originStation" class="form-label">Origin Station</label>
-                            <select class="form-select" id="originStation" [(ngModel)]="parcel.originStation" required>
+                            <select class="form-select" id="originStation" name="originStation"
+                                [(ngModel)]="parcel.originStation" required>
                                 <option value="">Choose...</option>
                                 <option *ngFor="let station of stations" [value]="station">{{ station }}</option>
                             </select>
@@ -140,8 +142,8 @@
 
                         <div class="col-md-4">
                             <label for="destinationStation" class="form-label">Destination Station</label>
-                            <select class="form-select" id="destinationStation" [(ngModel)]="parcel.destinationStation"
-                                required>
+                            <select class="form-select" id="destinationStation" name="destinationStation"
+                                [(ngModel)]="parcel.destinationStation" required>
                                 <option value="">Choose...</option>
                                 <option *ngFor="let station of stations" [value]="station">{{ station }}</option>
                             </select>
@@ -158,7 +160,7 @@
                     <div class="row gy-3">
                         <div class="col-md-6">
                             <label for="payment" class="form-label">Payment</label>
-                            <input type="text" class="form-control" id="payment" placeholder="Rs"
+                            <input type="text" class="form-control" id="payment" name="payment" placeholder="Rs"
                                 [(ngModel)]="parcel.payment" required>
                             <div class="invalid-feedback">
                                 Payment is required.
