@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-add-parcel',
   standalone: true,
-  imports: [FormsModule, CommonModule, HttpClientModule, ReactiveFormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './add-parcel.component.html',
   styleUrl: './add-parcel.component.css'
 })
@@ -75,14 +75,23 @@ export class AddParcelComponent {
     "Talaimannar"
   ];
 
-  constructor(private http: HttpClient) {
-
-  }
+  constructor(private http: HttpClient) { }
 
   public addParcel() {
+    if (Object.values(this.parcel).some(field => field === null || field === '')) {
+      console.warn("Some fields are empty. Please fill all required fields.");
+      return;
+    }
+
+    console.log("Parcel data being sent:", this.parcel);
+
     this.http.post("http://localhost:8080/parcel/add-parcel", this.parcel).subscribe((data) => {
       alert("Parcel Information Add Sucsesfull !!!");
-    })
+    },
+      (error) => {
+        console.error("Error adding parcel:", error);
+        alert("Failed to add parcel. Please try again.");
+      })
   }
 
 }
