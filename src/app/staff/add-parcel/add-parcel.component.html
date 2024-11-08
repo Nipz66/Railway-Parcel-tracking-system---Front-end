@@ -3,27 +3,33 @@
 </div>
 
 <div class="container align-items-center">
-    <div class="row">
-        <div class="col">
-            <div class="form">
-                <div class="sender">
-                    <h4 class="mb-3">Sender Info</h4>
-                    <form class="needs-validation" novalidate>
+    <form #parcelForm="ngForm" (ngSubmit)="addParcel()" class="needs-validation" novalidate>
+        <div class="row">
+            <div class="col">
+                <div class="form">
+                    <div class="sender">
+                        <h4 class="mb-3">Sender Info</h4>
                         <div class="row g-3">
                             <div class="col-12">
                                 <label for="senderName" class="form-label">Sender Name</label>
                                 <input type="text" class="form-control" id="senderName" name="senderName"
-                                    placeholder="R.D Saman Kumara" [(ngModel)]="parcel.senderName" required>
-                                <div class="invalid-feedback">
-                                    Valid sender name is required.
+                                    placeholder="R.D Saman Kumara" [(ngModel)]="parcel.senderName" required
+                                    #senderNameField="ngModel"
+                                    [ngClass]="{'is-invalid': senderNameField.invalid && (senderNameField.dirty || senderNameField.touched)}">
+                                <div *ngIf="senderNameField.invalid && (senderNameField.dirty || senderNameField.touched)"
+                                    class="invalid-feedback">
+                                    Sender name is required.
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <label for="senderPhoneNumber" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" id="senderPhoneNumber" name="senderPhoneNumber"
-                                    [(ngModel)]="parcel.senderPhoneNumber" required>
-                                <div class="invalid-feedback">
+                                <input type="text" class="form-control" id="senderPhoneNumber"
+                                    placeholder="Phone number" name="senderPhoneNumber"
+                                    [(ngModel)]="parcel.senderPhoneNumber" required #senderPhoneField="ngModel"
+                                    [ngClass]="{'is-invalid': senderPhoneField.invalid && (senderPhoneField.dirty || senderPhoneField.touched)}">
+                                <div *ngIf="senderPhoneField.invalid && (senderPhoneField.dirty || senderPhoneField.touched)"
+                                    class="invalid-feedback">
                                     Your phone number is required.
                                 </div>
                             </div>
@@ -41,29 +47,32 @@
                             <div class="col-12">
                                 <label for="senderAddress" class="form-label">Address</label>
                                 <input type="text" class="form-control" id="senderAddress" name="senderAddress"
-                                    [(ngModel)]="parcel.senderAddress" required>
-                                <div class="invalid-feedback">
+                                    [(ngModel)]="parcel.senderAddress" required #senderAddressField="ngModel"
+                                    [ngClass]="{'is-invalid': senderAddressField.invalid && (senderAddressField.dirty || senderAddressField.touched)}">
+                                <div *ngIf="senderAddressField.invalid && (senderAddressField.dirty || senderAddressField.touched)"
+                                    class="invalid-feedback">
                                     Please enter your address.
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Receiver Info Section -->
-        <div class="col">
-            <div class="form">
-                <div class="receiver">
-                    <h4 class="mb-3">Receiver Info</h4>
-                    <form class="needs-validation" novalidate>
+            <!-- Receiver Info Section -->
+            <div class="col">
+                <div class="form">
+                    <div class="receiver">
+                        <h4 class="mb-3">Receiver Info</h4>
                         <div class="row g-3">
                             <div class="col-12">
                                 <label for="receiverName" class="form-label">Receiver Name</label>
                                 <input type="text" class="form-control" id="receiverName" name="receiverName"
-                                    placeholder="A.A Wikum Sanjaya" [(ngModel)]="parcel.receiverName" required>
-                                <div class="invalid-feedback">
+                                    placeholder="A.A Wikum Sanjaya" [(ngModel)]="parcel.receiverName" required
+                                    #receiverNameField="ngModel"
+                                    [ngClass]="{'is-invalid': receiverNameField.invalid && (receiverNameField.dirty || receiverNameField.touched)}">
+                                <div *ngIf="receiverNameField.invalid && (receiverNameField.dirty || receiverNameField.touched)"
+                                    class="invalid-feedback">
                                     Valid receiver name is required.
                                 </div>
                             </div>
@@ -72,17 +81,20 @@
                                 <label for="receiverPhoneNumber" class="form-label">Phone Number</label>
                                 <input type="text" class="form-control" id="receiverPhoneNumber"
                                     name="receiverPhoneNumber" placeholder="Phone number"
-                                    [(ngModel)]="parcel.receiverPhoneNumber" required>
-                                <div class="invalid-feedback">
-                                    Your phone number is required.
+                                    [(ngModel)]="parcel.receiverPhoneNumber" required #receiverPhoneField="ngModel"
+                                    [ngClass]="{'is-invalid': receiverPhoneField.invalid && (receiverPhoneField.dirty || receiverPhoneField.touched)}">
+                                <div *ngIf="receiverPhoneField.invalid && (receiverPhoneField.dirty || receiverPhoneField.touched)"
+                                    class="invalid-feedback">
+                                    Receiver phone number is required.
                                 </div>
+
                             </div>
 
                             <div class="col-12">
                                 <label for="receiverGmail" class="form-label">Email <span
                                         class="text-body-secondary">(Optional)</span></label>
                                 <input type="email" class="form-control" id="receiverGmail" name="receiverGmail"
-                                    placeholder="you@example.com" [(ngModel)]="parcel.receiverGmail">
+                                    [(ngModel)]="parcel.receiverGmail">
                                 <div class="invalid-feedback">
                                     Please enter a valid email address for shipping updates.
                                 </div>
@@ -91,87 +103,90 @@
                             <div class="col-12">
                                 <label for="receiverAddress" class="form-label">Address</label>
                                 <input type="text" class="form-control" id="receiverAddress" name="receiverAddress"
-                                    placeholder="1234 Main St" [(ngModel)]="parcel.receiverAddress" required>
-                                <div class="invalid-feedback">
+                                    [(ngModel)]="parcel.receiverAddress" required #receiverAddressField="ngModel"
+                                    [ngClass]="{'is-invalid': receiverAddressField.invalid && (receiverAddressField.dirty || receiverAddressField.touched)}">
+                                <div *ngIf="receiverAddressField.invalid && (receiverAddressField.dirty || receiverAddressField.touched)"
+                                    class="invalid-feedback">
                                     Please enter the receiver's address.
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <hr class="my-4">
-
-        <!-- Parcel Info Section -->
-        <div class="form">
-            <div class="parcel-info">
-                <h4 class="mb-3">Parcel Info</h4>
-                <form class="needs-validation" novalidate>
+        <div class="row">
+            <div class="col">
+                <div class="form">
+                    <h4 class="mb-3">Parcel Details</h4>
                     <div class="row g-3">
-                        <div class="col-sm-6">
-                            <label for="weight" class="form-label">Weight</label>
-                            <input type="text" class="form-control" id="weight" name="weight" placeholder="Enter weight"
-                                [(ngModel)]="parcel.weight" required>
-                            <div class="invalid-feedback">
-                                Parcel weight is required.
+                        <div class="col-12">
+                            <label for="weight" class="form-label">Weight (kg)</label>
+                            <input type="number" class="form-control" id="weight" name="weight"
+                                [(ngModel)]="parcel.weight" required #weightField="ngModel"
+                                [ngClass]="{'is-invalid': weightField.invalid && (weightField.dirty || weightField.touched)}">
+                            <div *ngIf="weightField.invalid && (weightField.dirty || weightField.touched)"
+                                class="invalid-feedback">
+                                Weight is required.
                             </div>
                         </div>
 
                         <div class="col-12">
                             <label for="description" class="form-label">Description</label>
                             <textarea class="form-control" id="description" name="description"
-                                [(ngModel)]="parcel.description" rows="3" required></textarea>
-                            <div class="invalid-feedback">
-                                Please provide a description.
+                                [(ngModel)]="parcel.description" required #descriptionField="ngModel"
+                                [ngClass]="{'is-invalid': descriptionField.invalid && (descriptionField.dirty || descriptionField.touched)}"></textarea>
+                            <div *ngIf="descriptionField.invalid && (descriptionField.dirty || descriptionField.touched)"
+                                class="invalid-feedback">
+                                Description is required.
                             </div>
                         </div>
 
-                        <div class="col-md-5">
+                        <div class="col-12">
                             <label for="originStation" class="form-label">Origin Station</label>
                             <select class="form-select" id="originStation" name="originStation"
-                                [(ngModel)]="parcel.originStation" required>
+                                [(ngModel)]="parcel.originStation" required #originStationField="ngModel"
+                                [ngClass]="{'is-invalid': originStationField.invalid && (originStationField.dirty || originStationField.touched)}">
                                 <option value="">Choose...</option>
                                 <option *ngFor="let station of stations" [value]="station">{{ station }}</option>
                             </select>
-                            <div class="invalid-feedback">
-                                Please select a valid origin station.
+                            <div *ngIf="originStationField.invalid && (originStationField.dirty || originStationField.touched)"
+                                class="invalid-feedback">
+                                Please select a valid station.
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-12">
                             <label for="destinationStation" class="form-label">Destination Station</label>
                             <select class="form-select" id="destinationStation" name="destinationStation"
-                                [(ngModel)]="parcel.destinationStation" required>
+                                [(ngModel)]="parcel.destinationStation" required #destinationStationField="ngModel"
+                                [ngClass]="{'is-invalid': destinationStationField.invalid && (destinationStationField.dirty || destinationStationField.touched)}">
                                 <option value="">Choose...</option>
                                 <option *ngFor="let station of stations" [value]="station">{{ station }}</option>
                             </select>
-                            <div class="invalid-feedback">
-                                Please select a valid destination station.
+                            <div *ngIf="destinationStationField.invalid && (destinationStationField.dirty || destinationStationField.touched)"
+                                class="invalid-feedback">
+                                Destination station is required.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="payment" class="form-label">Payment Method</label>
+                            <input type="text" class="form-control" id="payment" name="payment"
+                                [(ngModel)]="parcel.payment" required #paymentField="ngModel"
+                                [ngClass]="{'is-invalid': paymentField.invalid && (paymentField.dirty || paymentField.touched)}">
+                            <div *ngIf="paymentField.invalid && (paymentField.dirty || paymentField.touched)"
+                                class="invalid-feedback">
+                                Payment method is required.
                             </div>
                         </div>
                     </div>
-
-                    <hr class="my-4">
-
-                    <!-- Payment Section -->
-                    <h4 class="mb-3">Payment</h4>
-                    <div class="row gy-3">
-                        <div class="col-md-6">
-                            <label for="payment" class="form-label">Payment</label>
-                            <input type="text" class="form-control" id="payment" name="payment" placeholder="Rs"
-                                [(ngModel)]="parcel.payment" required>
-                            <div class="invalid-feedback">
-                                Payment is required.
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-
-    <button class="w-100 btn btn-primary btn-lg m-lg-5" type="button" (click)="addParcel()">Parcel Place</button>
+        <div class="container align-items-center">
+            <button class="w-50 btn btn-primary btn-lg m-lg-auto" type="submit">Place Parcel</button>
+        </div>
+    </form>
 </div>
