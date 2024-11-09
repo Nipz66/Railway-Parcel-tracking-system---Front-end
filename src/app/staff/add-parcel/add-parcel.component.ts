@@ -26,7 +26,8 @@ export class AddParcelComponent {
     description: "",
     originStation: "",
     destinationStation: "",
-    payment: ""
+    payment: "",
+    created_at: ""
   };
 
   // Existing stations array...
@@ -93,6 +94,11 @@ export class AddParcelComponent {
       return;
     }
 
+    const parcelData = {
+      ...this.parcel,
+      created_at: new Date() // Set created_at to the current date and time
+    };
+
     // Proceed with parcel addition if form is valid
     console.log("Parcel data being sent:", this.parcel);
 
@@ -131,7 +137,7 @@ export class AddParcelComponent {
     this.parcel = {
       senderName: "", senderPhoneNumber: "", senderGmail: "", senderAddress: "",
       receiverName: "", receiverPhoneNumber: "", receiverGmail: "", receiverAddress: "",
-      weight: "", description: "", originStation: "", destinationStation: "", payment: ""
+      weight: "", description: "", originStation: "", destinationStation: "", payment: "", created_at: ""
     };
   }
 

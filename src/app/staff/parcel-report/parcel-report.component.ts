@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
+import { HttpClient } from '@angular/common/http';
 import $ from 'jquery';
 import 'datatables.net';
 
@@ -12,50 +13,31 @@ import 'datatables.net';
   imports: [CommonModule, MatTableModule]
 })
 export class ParcelReportComponent implements AfterViewInit, OnDestroy {
-  displayedColumns: string[] = ['id', 'sender', 'receiver', 'status', 'dateShipped'];
-  dataSource = [
-    { id: 1, sender: 'Alice', receiver: 'Bob', status: 'Delivered', dateShipped: '2023-10-01' },
-    { id: 2, sender: 'Charlie', receiver: 'David', status: 'In Transit', dateShipped: '2023-10-02' },
-    { id: 3, sender: 'Eve', receiver: 'Frank', status: 'Pending', dateShipped: '2023-10-03' },
-    { id: 4, sender: 'Grace', receiver: 'Heidi', status: 'Delivered', dateShipped: '2023-10-04' },
-    { id: 5, sender: 'Ivan', receiver: 'Judy', status: 'Returned', dateShipped: '2023-10-05' },
-    { id: 1, sender: 'Alice', receiver: 'Bob', status: 'Delivered', dateShipped: '2023-10-01' },
-    { id: 2, sender: 'Charlie', receiver: 'David', status: 'In Transit', dateShipped: '2023-10-02' },
-    { id: 3, sender: 'Eve', receiver: 'Frank', status: 'Pending', dateShipped: '2023-10-03' },
-    { id: 4, sender: 'Grace', receiver: 'Heidi', status: 'Delivered', dateShipped: '2023-10-04' },
-    { id: 5, sender: 'Ivan', receiver: 'Judy', status: 'Returned', dateShipped: '2023-10-05' },
-    { id: 1, sender: 'Alice', receiver: 'Bob', status: 'Delivered', dateShipped: '2023-10-01' },
-    { id: 2, sender: 'Charlie', receiver: 'David', status: 'In Transit', dateShipped: '2023-10-02' },
-    { id: 3, sender: 'Eve', receiver: 'Frank', status: 'Pending', dateShipped: '2023-10-03' },
-    { id: 4, sender: 'Grace', receiver: 'Heidi', status: 'Delivered', dateShipped: '2023-10-04' },
-    { id: 5, sender: 'Ivan', receiver: 'Judy', status: 'Returned', dateShipped: '2023-10-05' },
-    { id: 1, sender: 'Alice', receiver: 'Bob', status: 'Delivered', dateShipped: '2023-10-01' },
-    { id: 2, sender: 'Charlie', receiver: 'David', status: 'In Transit', dateShipped: '2023-10-02' },
-    { id: 3, sender: 'Eve', receiver: 'Frank', status: 'Pending', dateShipped: '2023-10-03' },
-    { id: 4, sender: 'Grace', receiver: 'Heidi', status: 'Delivered', dateShipped: '2023-10-04' },
-    { id: 5, sender: 'Ivan', receiver: 'Judy', status: 'Returned', dateShipped: '2023-10-05' },
-    { id: 1, sender: 'Alice', receiver: 'Bob', status: 'Delivered', dateShipped: '2023-10-01' },
-    { id: 2, sender: 'Charlie', receiver: 'David', status: 'In Transit', dateShipped: '2023-10-02' },
-    { id: 3, sender: 'Eve', receiver: 'Frank', status: 'Pending', dateShipped: '2023-10-03' },
-    { id: 4, sender: 'Grace', receiver: 'Heidi', status: 'Delivered', dateShipped: '2023-10-04' },
-    { id: 5, sender: 'Ivan', receiver: 'Judy', status: 'Returned', dateShipped: '2023-10-05' },
-    { id: 1, sender: 'Alice', receiver: 'Bob', status: 'Delivered', dateShipped: '2023-10-01' },
-    { id: 2, sender: 'Charlie', receiver: 'David', status: 'In Transit', dateShipped: '2023-10-02' },
-    { id: 3, sender: 'Eve', receiver: 'Frank', status: 'Pending', dateShipped: '2023-10-03' },
-    { id: 4, sender: 'Grace', receiver: 'Heidi', status: 'Delivered', dateShipped: '2023-10-04' },
-    { id: 5, sender: 'Ivan', receiver: 'Judy', status: 'Returned', dateShipped: '2023-10-05' },
-    { id: 1, sender: 'Alice', receiver: 'Bob', status: 'Delivered', dateShipped: '2023-10-01' },
-    { id: 2, sender: 'Charlie', receiver: 'David', status: 'In Transit', dateShipped: '2023-10-02' },
-    { id: 3, sender: 'Eve', receiver: 'Frank', status: 'Pending', dateShipped: '2023-10-03' },
-    { id: 4, sender: 'Grace', receiver: 'Heidi', status: 'Delivered', dateShipped: '2023-10-04' },
-    { id: 5, sender: 'Ivan', receiver: 'Judy', status: 'Returned', dateShipped: '2023-10-05' },
-    
-  
+  displayedColumns: string[] = [
+    'id',
+    'senderName',
+    'senderPhoneNumber',
+    'senderGmail',
+    'senderAddress',
+    'receiverName',
+    'receiverPhoneNumber',
+    'receiverGmail',
+    'receiverAddress',
+    'weight',
+    'description',
+    'originStation',
+    'destinationStation',
+    'payment',
+    'createdAt'
   ];
+
+  dataSource: any[] = []; // Initialize as an empty array
   private dataTable: any;
 
+  constructor(private http: HttpClient) { }
+
   ngAfterViewInit() {
-    this.initializeDataTable();
+    this.fetchData(); // Fetch data when the view initializes
   }
 
   ngOnDestroy() {
@@ -64,15 +46,34 @@ export class ParcelReportComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  private fetchData() {
+    this.http.get<any[]>('http://localhost:8080/parcel/get-all').subscribe(data => {
+      this.dataSource = data; // Assign the fetched data to dataSource
+      this.initializeDataTable(); // Initialize DataTable with the new data
+    }, error => {
+      console.error('Error fetching data:', error);
+    });
+  }
+
   private initializeDataTable() {
     this.dataTable = $('#myTable').DataTable({
       data: this.dataSource,
       columns: [
         { data: 'id' },
-        { data: 'sender' },
-        { data: 'receiver' },
-        { data: 'status' },
-        { data: 'dateShipped' }
+        { data: 'senderName' },
+        { data: 'senderPhoneNumber' },
+        { data: 'senderGmail' },
+        { data: 'senderAddress' },
+        { data: 'receiverName' },
+        { data: 'receiverPhoneNumber' },
+        { data: 'receiverGmail' },
+        { data: 'receiverAddress' },
+        { data: 'weight' },
+        { data: 'description' },
+        { data: 'originStation' },
+        { data: 'destinationStation' },
+        { data: 'payment' },
+        { data: 'createdAt' }
       ]
     });
   }
