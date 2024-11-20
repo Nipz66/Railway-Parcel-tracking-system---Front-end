@@ -171,7 +171,7 @@
                         </div>
 
                         <div class="col-12">
-                            <label for="payment" class="form-label">Payment Method</label>
+                            <label for="payment" class="form-label">Payment</label>
                             <input type="text" class="form-control" id="payment" name="payment"
                                 [(ngModel)]="parcel.payment" required #paymentField="ngModel"
                                 [ngClass]="{'is-invalid': paymentField.invalid && (paymentField.dirty || paymentField.touched)}">
