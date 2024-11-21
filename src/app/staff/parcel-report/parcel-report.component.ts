@@ -31,13 +31,13 @@ export class ParcelReportComponent implements AfterViewInit, OnDestroy {
     'createdAt'
   ];
 
-  dataSource: any[] = []; // Initialize as an empty array
+  dataSource: any[] = []; // 
   private dataTable: any;
 
   constructor(private http: HttpClient) { }
 
   ngAfterViewInit() {
-    this.fetchData(); // Fetch data when the view initializes
+    this.fetchData(); //
   }
 
   ngOnDestroy() {
@@ -48,8 +48,8 @@ export class ParcelReportComponent implements AfterViewInit, OnDestroy {
 
   private fetchData() {
     this.http.get<any[]>('http://localhost:8080/parcel/get-all').subscribe(data => {
-      this.dataSource = data; // Assign the fetched data to dataSource
-      this.initializeDataTable(); // Initialize DataTable with the new data
+      this.dataSource = data;
+      this.initializeDataTable();
     }, error => {
       console.error('Error fetching data:', error);
     });

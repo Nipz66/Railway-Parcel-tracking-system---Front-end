@@ -1,15 +1,34 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-staff-registation',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [FormsModule,CommonModule,HttpClientModule],
   templateUrl: './staff-registation.component.html',
   styleUrl: './staff-registation.component.css'
 })
 export class StaffRegistationComponent {
-  @ViewChild('staffRegistation') staffRegistation!: NgForm;
 
+  public staff:any={
+    firstName:"",
+    lastName:"",
+    address:"",
+    phoneNumber:"",
+    dob:"",
+    email:"",
+    station:"",
+    role:""
+  }
+
+  constructor(private http:HttpClient){}
+
+  public addStaff(){
+    this.http.post("http://localhost:8080/staff/add-staff",this.staff).subscribe((data)=>{
+      alert("Staff Registation Done!!!");
+    })
+  }
+  
 }
