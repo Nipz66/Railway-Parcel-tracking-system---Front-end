@@ -8,7 +8,7 @@ import { FormsModule, NgForm } from '@angular/forms';
   standalone: true,
   imports: [FormsModule,CommonModule,HttpClientModule],
   templateUrl: './staff-registation.component.html',
-  styleUrl: './staff-registation.component.css'
+  styleUrl: './staff-registation.component.css',
 })
 export class StaffRegistationComponent {
 
@@ -20,7 +20,8 @@ export class StaffRegistationComponent {
     dob:"",
     email:"",
     station:"",
-    role:""
+    role:"",
+    password:""
   }
 
   constructor(private http:HttpClient){}
