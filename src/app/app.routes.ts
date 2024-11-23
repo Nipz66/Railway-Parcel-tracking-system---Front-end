@@ -35,23 +35,21 @@ export const routes: Routes = [
         path: 'admin-dashboard',
         component: AdminNavbarComponent,
         children: [
-            {path: 'admin-home', component: AdminHomeComponent},
-          { path: 'staff-registration', component: StaffRegistationComponent },
-          { path: 'staff-management', component: StaffManagementComponent },
-          { path: 'parcel-status-update', component: ParcelStatusComponent }
-        ]
-      },
-
-    {
-        path: 'staff-dashboard', component: StaffNavbarComponent, children: [
-            { path: 'add-parcel', component: AddParcelComponent },
-            { path: 'parcel-report', component: ParcelReportComponent },
-            { path: 'parcel-status-update', component: ParcelStatusComponent },
-            { path: 'parcel-calculator', component: ParcelCalcultorComponent }
-
+            { path: 'admin-home', component: AdminHomeComponent },
+            { path: 'staff-registration', component: StaffRegistationComponent },
+            { path: 'staff-management', component: StaffManagementComponent },
+            { path: 'parcel-status-update', component: ParcelStatusComponent }
         ]
     },
-    { path: '**', redirectTo: '' } // Redirect to Home for any unknown routes
+
+    {
+        path: 'staff-dashboard', component: StaffNavbarComponent
+    },
+    { path: 'add-parcel', component: AddParcelComponent },
+    { path: 'parcel-report', component: ParcelReportComponent },
+    { path: 'parcel-status-update', component: ParcelStatusComponent },
+    { path: 'parcel-calculator', component: ParcelCalcultorComponent },
+{ path: '**', redirectTo: '' } // Redirect to Home for any unknown routes
 ];
 
 @NgModule({

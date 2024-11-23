@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-staff-navbar',
@@ -10,5 +10,6 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './staff-navbar.component.css'
 })
 export class StaffNavbarComponent {
+  }
 
-}
+

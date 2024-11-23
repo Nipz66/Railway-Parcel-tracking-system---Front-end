@@ -4,13 +4,14 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClient } from '@angular/common/http';
 import $ from 'jquery';
 import 'datatables.net';
+import { StaffNavbarComponent } from "../staff-navbar/staff-navbar.component";
 
 @Component({
   selector: 'app-parcel-report',
   standalone: true,
   templateUrl: './parcel-report.component.html',
   styleUrls: ['./parcel-report.component.css'],
-  imports: [CommonModule, MatTableModule]
+  imports: [CommonModule, MatTableModule, StaffNavbarComponent]
 })
 export class ParcelReportComponent implements AfterViewInit, OnDestroy {
   displayedColumns: string[] = [
