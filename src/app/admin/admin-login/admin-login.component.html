@@ -11,7 +11,8 @@
             <input type="password" id="password" class="form-control" [(ngModel)]="admin.password" name="password"
                 required placeholder="Enter password" />
         </div>
-        <button type="submit" class="btn btn-primary w-100">Login</button>
+        <button type="submit" class="btn btn-primary w-100" >Login</button>
+        this.router.navigate(['/admin-dashboard']);
     </form>
     <p *ngIf="errorMessage" class="text-danger mt-3">{{ errorMessage }}</p>
 </div>
