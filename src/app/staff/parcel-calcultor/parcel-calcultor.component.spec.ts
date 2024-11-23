@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdateStatusComponent } from './update-status.component';
+import { ParcelCalcultorComponent } from './parcel-calcultor.component';
 
-describe('UpdateStatusComponent', () => {
-  let component: UpdateStatusComponent;
-  let fixture: ComponentFixture<UpdateStatusComponent>;
+describe('ParcelCalcultorComponent', () => {
+  let component: ParcelCalcultorComponent;
+  let fixture: ComponentFixture<ParcelCalcultorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UpdateStatusComponent]
+      imports: [ParcelCalcultorComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UpdateStatusComponent);
+    fixture = TestBed.createComponent(ParcelCalcultorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,75 @@
+/* Overall Background */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    /* Gradient background */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login Container */
+.container {
+    max-width: 400px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+    animation: fadeIn 1.2s ease-in-out;
+    /* Smooth fade-in effect */
+}
+
+/* Header Styling */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2294f1;
+    font-weight: 700;
+}
+
+/* Form Inputs */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Submit Button */
+button {
+    background: #2294f1;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #2294f1;
+    cursor: pointer;
+}
+
+/* Error Message */
+.text-danger {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Keyframe for Fade-In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
