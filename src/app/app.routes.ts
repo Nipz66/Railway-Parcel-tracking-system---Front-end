@@ -14,12 +14,13 @@ import { StaffNavbarComponent } from './staff/staff-navbar/staff-navbar.componen
 import { AddParcelComponent } from './staff/add-parcel/add-parcel.component';
 import { ParcelReportComponent } from './staff/parcel-report/parcel-report.component';
 import { ParcelCalcultorComponent } from './staff/parcel-calcultor/parcel-calcultor.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 
 export const routes: Routes = [
     {
         path: '',
         redirectTo: '/home',
-        pathMatch: 'full' 
+        pathMatch: 'full'
     },
     {
         path: 'home', component: NavBarComponent
@@ -29,11 +30,17 @@ export const routes: Routes = [
     { path: 'faqs', component: FAQsComponent },//home faqs
     { path: 'contact', component: ContactComponent },//home contact
     { path: 'admin-login', component: AdminLoginComponent },
-    { path: 'admin-dashboard', component: AdminNavbarComponent, children: [
-        { path: 'staff-registration', component: StaffRegistationComponent },
-        { path: 'staff-management', component: StaffManagementComponent },
-        { path: 'parcel-status-update', component: ParcelStatusComponent }
-      ]},
+    { path: '', redirectTo: '/admin-dashboard', pathMatch: 'full' },
+    {
+        path: 'admin-dashboard',
+        component: AdminNavbarComponent,
+        children: [
+            {path: 'admin-home', component: AdminHomeComponent},
+          { path: 'staff-registration', component: StaffRegistationComponent },
+          { path: 'staff-management', component: StaffManagementComponent },
+          { path: 'parcel-status-update', component: ParcelStatusComponent }
+        ]
+      },
 
     {
         path: 'staff-dashboard', component: StaffNavbarComponent, children: [

@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <h2 class="text-center">Admin Login</h2>
-    <form (submit)="onLogin()">
+    <form (submit)="onLogin($event)">
         <div class="form-group mb-3">
             <label for="email">Email:</label>
             <input type="email" id="email" class="form-control" [(ngModel)]="admin.email" name="email" required
@@ -11,8 +11,7 @@
             <input type="password" id="password" class="form-control" [(ngModel)]="admin.password" name="password"
                 required placeholder="Enter password" />
         </div>
-        <button type="submit" class="btn btn-primary w-100" >Login</button>
-        this.router.navigate(['/admin-dashboard']);
+        <button type="submit" class="btn btn-primary w-100">Login</button>
     </form>
     <p *ngIf="errorMessage" class="text-danger mt-3">{{ errorMessage }}</p>
 </div>

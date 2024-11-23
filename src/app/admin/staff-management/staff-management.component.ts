@@ -4,11 +4,12 @@ import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import $ from 'jquery';
 import 'datatables.net';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-staff-management',
   standalone: true,
-  imports: [CommonModule, MatTableModule],
+  imports: [CommonModule, MatTableModule, RouterOutlet],
   templateUrl: './staff-management.component.html',
   styleUrl: './staff-management.component.css'
 })

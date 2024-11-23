@@ -2,19 +2,22 @@
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="#">
             <img src="slrpt logo 2.png" alt="Logo" class="d-inline-block align-text-top me-2">
-            <span class="brand-text text-colo">Sri Lankan Railway Parcel Transport -  ශ්‍රී ලංකා දුම්රිය පාර්සල් ප්‍රවාහන දෙපාර්තමේන්තුව
+            <span class="brand-text text-colo">Sri Lankan Railway Parcel Transport - ශ්‍රී ලංකා දුම්රිය පාර්සල් ප්‍රවාහන
+                දෙපාර්තමේන්තුව
             </span>
         </a>
 
         <ul class="nav me-auto justify-content-center flex-grow-1">
             <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3 active"
-                    aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3" >Staff Registation</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Staff Management</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Parcel Report</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Update Parcel Status</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Account</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Logout</a></li>
+                    aria-current="page" routerLink="/admin-dashboard/admin-home">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3"
+                    routerLink="/admin-dashboard/staff-registration">Staff Registation</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3"
+                    routerLink="/admin-dashboard/staff-management">Staff Management</a></li>
+            <li class="nav-item"><a  class="nav-link link-body-emphasis px-3" routerLink="/admin-dashboard">Parcel Report</a></li>
+            <li class="nav-item"><a class="nav-link link-body-emphasis px-3" routerLink="/admin-dashboard/parcel-status-update">Update Parcel Status</a></li>
+            <li class="nav-item"><a class="nav-link link-body-emphasis px-3">Account</a></li>
+            <li class="nav-item"><a class="nav-link link-body-emphasis px-3">Logout</a></li>
         </ul>
 
         <!-- <ul class="nav">
@@ -23,3 +26,8 @@
         </ul> -->
     </div>
 </nav>
+
+<div class="container-fluid">
+    <router-outlet></router-outlet>
+
+</div>
