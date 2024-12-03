@@ -1,1 +1,66 @@
-<p>parcel-calcultor works!</p>
+<div class="calculator align-items-center m-lg-auto">
+    <h1>Parcel Calculator</h1>
+    <form (ngSubmit)="calculateCost()">
+      <!-- Distance Input -->
+      <label for="distance">Distance (Km):</label>
+      <input
+        id="distance"
+        type="number"
+        [(ngModel)]="distance"
+        name="distance"
+        required
+        placeholder="Enter distance in km"
+      />
+  
+      <!-- Weight Input -->
+      <label for="weight">Weight (Kg):</label>
+      <input
+        id="weight"
+        type="number"
+        [(ngModel)]="weight"
+        name="weight"
+        required
+        placeholder="Enter weight in kg"
+      />
+  
+      <!-- Parcel Value Input -->
+      <label for="value">Parcel Value (Rs):</label>
+      <p>(Helps users calculate mandatory charges for high-value items)</p>
+      <input
+        id="value"
+        type="number"
+        [(ngModel)]="parcelValue"
+        name="value"
+        required
+        placeholder="Enter parcel value (optional)"
+      />
+  
+      <!-- Express Option -->
+      <label for="express">Express Train (3x Normal Rate):</label>
+      <input id="express" type="checkbox" [(ngModel)]="isExpress" name="express" />
+  
+      <!-- Special Items -->
+      <label for="special">Special Item (e.g., fragile):</label>
+      <select id="special" [(ngModel)]="specialItem" name="special">
+        <option value="">None</option>
+        <option value="fragile">Fragile</option>
+        <option value="furniture">Furniture</option>
+        <option value="chicks">Chicks</option>
+      </select>
+  
+      <button type="submit">Calculate</button>
+    </form>
+  
+    <!-- Cost Breakdown -->
+    <div *ngIf="costBreakdown">
+      <h2>Cost Breakdown:</h2>
+      <ul>
+        <li>Base Cost: Rs. {{ costBreakdown.baseCost }}</li>
+        <li>Express Service: Rs. {{ costBreakdown.expressCost }}</li>
+        <li>Special Item Charge: Rs. {{ costBreakdown.specialItemCharge }}</li>
+        <li>Insurance: Rs. {{ costBreakdown.insurance }}</li>
+        <li><strong>Total Cost: Rs. {{ costBreakdown.total }}</strong></li>
+      </ul>
+    </div>
+  </div>
+  
