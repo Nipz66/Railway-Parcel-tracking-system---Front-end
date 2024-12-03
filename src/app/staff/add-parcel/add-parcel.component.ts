@@ -3,11 +3,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { StaffNavbarComponent } from "../staff-navbar/staff-navbar.component";
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-add-parcel',
   standalone: true,
-  imports: [FormsModule, CommonModule, StaffNavbarComponent],
+  imports: [FormsModule, CommonModule, RouterOutlet],
   templateUrl: './add-parcel.component.html',
   styleUrl: './add-parcel.component.css'
 })

@@ -22,7 +22,7 @@ export class AdminLoginComponent {
 
   onLogin(event: Event) {
     if (this.admin.email == "staff@example.com" && this.admin.password == "staff123") {
-      this.router.navigate(['/add-parcel']);
+      this.router.navigate(['staff-dashboard/add-parcel']);
       return;
     }else{
       event.preventDefault(); // Prevent default form submission

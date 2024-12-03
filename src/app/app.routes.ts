@@ -15,6 +15,7 @@ import { AddParcelComponent } from './staff/add-parcel/add-parcel.component';
 import { ParcelReportComponent } from './staff/parcel-report/parcel-report.component';
 import { ParcelCalcultorComponent } from './staff/parcel-calcultor/parcel-calcultor.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { HomeComponent } from './common/home/home.component';
 
 export const routes: Routes = [
     {
@@ -22,14 +23,15 @@ export const routes: Routes = [
         redirectTo: '/home',
         pathMatch: 'full'
     },
-    {
-        path: 'home', component: NavBarComponent
-    },
-    { path: 'about', component: AboutComponent },//home about
-    { path: 'features', component: FeaturesComponent },//home feature
-    { path: 'faqs', component: FAQsComponent },//home faqs
-    { path: 'contact', component: ContactComponent },//home contact
+
+    { path: 'home', component: NavBarComponent },
+    { path: 'home', component: HomeComponent },
+    { path: 'about', component: AboutComponent },
+    { path: 'features', component: FeaturesComponent },
+    { path: 'faqs', component: FAQsComponent },
+    { path: 'contact', component: ContactComponent },
     { path: 'admin-login', component: AdminLoginComponent },
+
     { path: '', redirectTo: '/admin-dashboard', pathMatch: 'full' },
     {
         path: 'admin-dashboard',
@@ -41,15 +43,16 @@ export const routes: Routes = [
             { path: 'parcel-status-update', component: ParcelStatusComponent }
         ]
     },
-
     {
-        path: 'staff-dashboard', component: StaffNavbarComponent
-    },
-    { path: 'add-parcel', component: AddParcelComponent },
-    { path: 'parcel-report', component: ParcelReportComponent },
-    { path: 'parcel-status-update', component: ParcelStatusComponent },
-    { path: 'parcel-calculator', component: ParcelCalcultorComponent },
-{ path: '**', redirectTo: '' } // Redirect to Home for any unknown routes
+        path: 'staff-dashboard',
+        component: StaffNavbarComponent,
+        children: [
+            { path: 'add-parcel', component: AddParcelComponent },
+            { path: 'parcel-report', component: ParcelReportComponent },
+            { path: 'parcel-status-update', component: ParcelStatusComponent },
+            { path: 'parcel-calculator', component: ParcelCalcultorComponent }
+        ]
+    }
 ];
 
 @NgModule({
