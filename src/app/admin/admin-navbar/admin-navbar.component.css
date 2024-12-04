@@ -105,3 +105,19 @@
     height: 500px;
     object-fit: cover;
 }
+
+.custom-header {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+
+}
+
+.header-logo {
+    width: 250px;
+    height: auto;
+
+}

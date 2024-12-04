@@ -29,9 +29,9 @@ export class AdminLoginComponent {
       this.http.post('http://localhost:8080/admin/login', this.admin, { responseType: 'text' }).subscribe({
         next: (response) => {
           alert('Login successful!');
-          localStorage.setItem('adminToken', response); // Save the token (optional)
+          localStorage.setItem('adminToken', response);
           this.errorMessage = null;
-          this.router.navigate(['/admin-dashboard/admin-home']); // Navigate to Admin Dashboard
+          this.router.navigate(['/admin-dashboard/staff-registration']);
         },
         error: (error) => {
           console.error('Error:', error);

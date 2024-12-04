@@ -1,11 +1,18 @@
 .custom-navbar .navbar-brand img {
-  width: 120px;
-  height: auto;
+  width: 60px;
+  height: 100px;
+  margin-right: 10px;
 }
+
+
+.custom-navbar {
+  box-shadow: 0 4px 6px rgb(255, 255, 255);
+}
+
 
 @media (min-width: 768px) {
   .custom-navbar .navbar-brand img {
-    width: 150px;
+    width: 50px;
   }
 }
 
@@ -13,14 +20,56 @@
   font-size: 1.5rem;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 576px) {
   .carousel-caption h1 {
-    font-size: 2.5rem;
+    font-size: 1.2rem;
   }
 }
 
+
+.nav-link.active::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #ffc107;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+}
+
+
 .carousel-inner img {
-  filter: brightness(50%);
-  height: 600px;
-  object-fit: cover;
+  filter: brightness(50%) contrast(90%);
+  transition: filter 0.3s ease;
+}
+
+.carousel-inner img:hover {
+  filter: brightness(60%) contrast(100%);
+}
+
+
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffc107;
+}
+
+.custom-header {
+  height: 250px;
+  display: flex;
+  align-items: center;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  
+}
+
+.header-logo {
+  width: 250px;
+  height: auto;
+
 }
