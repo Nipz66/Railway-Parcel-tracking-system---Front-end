@@ -1,1 +1,28 @@
-<p>parcel-status works!</p>
+<table id="parcelTable" class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let parcel of parcels">
+            <td>{{ parcel.id }}</td>
+            <td>{{ parcel.origin }}</td>
+            <td>{{ parcel.destination }}</td>
+            <td>
+                <select [(ngModel)]="parcel.status">
+                    <option value="In Transit">In Transit</option>
+                    <option value="Arrived at Destination">Arrived at Destination</option>
+                    <option value="Delivered">Delivered</option>
+                </select>
+            </td>
+            <td>
+                <button (click)="updateStatus(parcel)">Update</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
